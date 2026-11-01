@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PawLink · 宠伴桌面</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#top" aria-label="PawLink 首页"><span class="brand-mark">✦</span><span>PawLink</span></a>
+        <nav aria-label="主导航">
+          <button class="nav-item active" data-panel="home"><span>⌂</span>今天</button>
+          <button class="nav-item" data-panel="calendar"><span>◫</span>照护日程</button>
+          <button class="nav-item" data-panel="memories"><span>◌</span>相伴时刻</button>
+          <button class="nav-item" data-panel="privacy"><span>◈</span>隐私中心</button>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="pet-switch"><span class="mini-avatar">🐈</span><div><strong id="side-name">团子</strong><small>英国短毛猫</small></div><span class="chevron">⌄</span></div>
+          <button class="add-pet" id="edit-pet">+ 编辑宠物档案</button>
+        </div>
+      </aside>
+
+      <section class="content" id="top">
+        <header class="topbar">
+          <div><p class="eyebrow" id="date-label"></p><h1>早上好，林同学。</h1></div>
+          <div class="privacy-pill"><span class="privacy-dot"></span>本地优先 · 数据未上传</div>
+        </header>
+
+        <section class="hero-grid panel-view" data-view="home">
+          <article class="pet-stage card">
+            <div class="stage-header"><span><i></i> 陪伴中</span><button class="icon-button" id="pet-action" title="和团子互动">♡</button></div>
+            <div class="sun sun-one"></div><div class="sun sun-two"></div>
+            <div class="window"><div class="frame-v"></div><div class="frame-h"></div><div class="cloud cloud-a"></div><div class="cloud cloud-b"></div></div>
+            <div class="rug"></div>
+            <div class="pet-wrap" id="pet-wrap" aria-label="团子的虚拟形象" role="img">
+              <div class="tail"></div><div class="body"></div><div class="head"><div class="ear left-ear"></div><div class="ear right-ear"></div><div class="face"><span class="eye left-eye"></span><span class="eye right-eye"></span><span class="nose"></span><span class="mouth"></span><span class="whisker w1"></span><span class="whisker w2"></span><span class="whisker w3"></span><span class="whisker w4"></span></div></div>
+            </div>
+            <div class="speech" id="speech">今天阳光很好，我在这里陪你。<span></span></div>
+            <div class="stage-footer"><div><strong id="stage-name">团子</strong><span>·</span><small id="mood-label">正在晒太阳</small></div><div class="mood-dots"><b></b><b></b><b></b></div></div>
+          </article>
+
+          <article class="summary-card card">
+            <p class="card-kicker">今日照护</p>
+            <div class="care-score"><span id="care-percent">67</span><small>%</small><em>已完成</em></div>
+            <div class="progress"><span id="progress-fill"></span></div>
+            <p class="score-note"><b id="done-count">2</b> / <b id="total-count">3</b> 项已完成</p>
+            <div class="next-care"><span class="clock">◷</span><div><small>下一件事</small><strong id="next-task">17:30 · 晚餐</strong></div></div>
+          </article>
+        </section>
+
+        <section class="section-head panel-view" data-view="home"><div><p class="eyebrow">TODAY'S RHYTHM</p><h2>团子的日常</h2></div><button class="text-button" id="add-routine">+ 添加事项</button></section>
+        <section class="routine-list panel-view" data-view="home" id="routine-list"></section>
+
+        <section class="lower-grid panel-view" data-view="home">
+          <article class="card camera-card"><div class="card-title"><div><p class="eyebrow">VISION SENSE</p><h2>在你身边</h2></div><label class="switch"><input id="camera-switch" type="checkbox"/><span></span></label></div><div class="camera-preview" id="camera-preview"><video id="camera" autoplay muted playsinline></video><div class="camera-placeholder" id="camera-placeholder"><span>◉</span><strong>视觉感知已关闭</strong><small>开启后，画面只在此设备处理</small></div><div class="scan-line"></div><div class="detected-badge" id="detected-badge">● 检测到团子</div></div><div class="camera-footer"><span id="camera-status">未启用摄像头</span><button class="text-button" id="simulate-detect">模拟入画</button></div></article>
+          <article class="card moments-card"><div class="card-title"><div><p class="eyebrow">LITTLE MOMENTS</p><h2>相伴时刻</h2></div><button class="icon-button">›</button></div><div class="moment-time"><span>09:42</span><i></i><p>在窗边晒了 18 分钟太阳</p></div><div class="moment-time"><span>08:15</span><i></i><p>早餐已被你标记完成</p></div><div class="moment-time muted"><span>昨天</span><i></i><p>晚间互动 3 次</p></div></article>
+        </section>
+
+        <section class="empty-panel panel-view" data-view="calendar"><span>◫</span><h2>照护日程</h2><p>日程与提醒会在这里呈现。你当前的 3 项日常安排也正在本机保存。</p></section>
+        <section class="empty-panel panel-view" data-view="memories"><span>◌</span><h2>相伴时刻</h2><p>开启视觉感知后，仅记录“入画事件”与时间，不保存录像。</p></section>
+        <section class="empty-panel panel-view" data-view="privacy"><span>◈</span><h2>隐私中心</h2><p>宠物资料、日程和互动记录默认仅保存在此设备。摄像头画面不上传，也不写入磁盘。</p></section>
+      </section>
+    </main>
+
+    <dialog id="routine-dialog"><form method="dialog" class="dialog-card"><button class="close" value="cancel">×</button><p class="eyebrow">NEW ROUTINE</p><h2>添加照护事项</h2><label>事项名称<input id="new-title" required maxlength="20" placeholder="例如：梳毛" /></label><label>提醒时间<input id="new-time" type="time" value="19:00" required /></label><button class="primary" id="save-routine" value="default">保存到本机</button></form></dialog>
+    <dialog id="pet-dialog"><form method="dialog" class="dialog-card"><button class="close" value="cancel">×</button><p class="eyebrow">PET PROFILE</p><h2>宠物档案</h2><label>宠物昵称<input id="pet-name-input" maxlength="12" value="团子" /></label><label>品种或类型<input id="pet-kind-input" maxlength="20" value="英国短毛猫" /></label><button class="primary" id="save-pet" value="default">保存更改</button></form></dialog>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>
